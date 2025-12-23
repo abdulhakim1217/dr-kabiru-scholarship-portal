@@ -1,13 +1,34 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Helmet } from "react-helmet-async";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Eligibility from "@/components/Eligibility";
+import ApplicationForm from "@/components/ApplicationForm";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <>
+      <Helmet>
+        <title>Dr. Kabiru MP Scholarship Fund | Apply for Educational Support</title>
+        <meta 
+          name="description" 
+          content="Apply for the Dr. Kabiru MP Scholarship Fund. Financial support for Nigerian students pursuing higher education. Tuition assistance, mentorship, and resources available." 
+        />
+        <meta name="keywords" content="scholarship, Nigeria, education, financial aid, university, Dr Kabiru, student support" />
+      </Helmet>
+      
+      <div className="min-h-screen">
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Eligibility />
+          <ApplicationForm />
+        </main>
+        <Footer />
       </div>
-    </div>
+    </>
   );
 };
 
