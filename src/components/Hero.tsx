@@ -21,7 +21,7 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 py-20 text-center">
         <div className="max-w-4xl mx-auto">
           <p className="text-sm font-mono uppercase tracking-widest text-muted-foreground mb-4">
-            Empowering Future Leaders
+            Empowering Walewale's Future Leaders
           </p>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-none">
             DR. KABIRU MP
@@ -30,8 +30,8 @@ const Hero = () => {
             </span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-            Investing in education, transforming lives. Apply now for financial 
-            support to pursue your academic dreams and build a brighter future.
+            Supporting students from Walewale Constituency to pursue higher education. 
+            Apply now for financial support to achieve your academic dreams.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
