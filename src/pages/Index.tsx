@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Eligibility from "@/components/Eligibility";
+import FAQ from "@/components/FAQ";
 import ApplicationForm from "@/components/ApplicationForm";
 import Footer from "@/components/Footer";
 
@@ -24,6 +25,7 @@ const Index = () => {
           <Hero />
           <About />
           <Eligibility />
+          <FAQ />
           <ApplicationForm />
         </main>
         <Footer />
