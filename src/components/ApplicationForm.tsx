@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Upload, FileText, X, Loader2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 
 interface FileUpload {
   file: File | null;
@@ -113,76 +112,57 @@ const ApplicationForm = () => {
     }
   };
 
-  const uploadFile = async (file: File, folder: string): Promise<string | null> => {
-    const fileExt = file.name.split('.').pop();
-    const fileName = `${folder}/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
-    
-    const { data, error } = await supabase.storage
-      .from('scholarship-documents')
-      .upload(fileName, file);
-
-    if (error) {
-      console.error('Upload error:', error);
-      throw error;
-    }
-
-    return data.path;
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Client-side validation
+    if (!transcriptFile || !applicationLetterFile || !nominationLetterFile) {
+      toast({
+        title: "Missing Required Documents",
+        description: "Please upload all required documents: transcript, application letter, and nomination letter.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
+    setUploadProgress("Submitting application...");
     
     try {
-      let transcriptUrl = null;
-      let applicationLetterUrl = null;
-      let nominationLetterUrl = null;
-      let supportingDocsUrl = null;
-
-      if (transcriptFile) {
-        setUploadProgress("Uploading transcript...");
-        transcriptUrl = await uploadFile(transcriptFile, 'transcripts');
-      }
-
-      if (applicationLetterFile) {
-        setUploadProgress("Uploading application letter...");
-        applicationLetterUrl = await uploadFile(applicationLetterFile, 'application-letters');
-      }
-
-      if (nominationLetterFile) {
-        setUploadProgress("Uploading nomination letter...");
-        nominationLetterUrl = await uploadFile(nominationLetterFile, 'nomination-letters');
-      }
-
+      // Build form data for edge function
+      const submitData = new FormData();
+      submitData.append('fullName', formData.fullName);
+      submitData.append('email', formData.email);
+      submitData.append('phone', formData.phone);
+      submitData.append('communityName', formData.communityName);
+      submitData.append('university', formData.university);
+      submitData.append('course', formData.course);
+      submitData.append('yearOfStudy', formData.yearOfStudy);
+      submitData.append('cgpa', formData.cgpa);
+      submitData.append('reason', formData.reason);
+      submitData.append('transcript', transcriptFile);
+      submitData.append('applicationLetter', applicationLetterFile);
+      submitData.append('nominationLetter', nominationLetterFile);
       if (supportingDocsFile) {
-        setUploadProgress("Uploading supporting documents...");
-        supportingDocsUrl = await uploadFile(supportingDocsFile, 'supporting-docs');
+        submitData.append('supportingDocs', supportingDocsFile);
       }
 
-      setUploadProgress("Submitting application...");
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-application`,
+        {
+          method: 'POST',
+          body: submitData,
+        }
+      );
 
-      const { error } = await supabase
-        .from('scholarship_applications')
-        .insert({
-          full_name: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-          community_name: formData.communityName,
-          university: formData.university,
-          course: formData.course,
-          year_of_study: formData.yearOfStudy,
-          cgpa: formData.cgpa,
-          reason: formData.reason,
-          transcript_url: transcriptUrl,
-          application_letter_url: applicationLetterUrl,
-          nomination_letter_url: nominationLetterUrl,
-          supporting_docs_url: supportingDocsUrl,
-        });
+      const result = await response.json();
 
-      if (error) {
-        throw error;
+      if (!response.ok) {
+        if (response.status === 429) {
+          throw new Error('Too many submissions. Please wait an hour before trying again.');
+        }
+        throw new Error(result.error || 'Failed to submit application');
       }
-      
       toast({
         title: "Application Submitted!",
         description: "Thank you for applying. We will review your application and contact you within 4-6 weeks.",
@@ -213,7 +193,7 @@ const ApplicationForm = () => {
       console.error('Submission error:', error);
       toast({
         title: "Submission Failed",
-        description: "There was an error submitting your application. Please try again.",
+        description: error instanceof Error ? error.message : "There was an error submitting your application. Please try again.",
         variant: "destructive",
       });
     } finally {
