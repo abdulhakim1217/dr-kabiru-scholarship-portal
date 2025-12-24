@@ -1,12 +1,12 @@
 import { Check, FileText, Calendar, Award } from "lucide-react";
 
 const requirements = [
-  "Nigerian citizen or permanent resident",
-  "Currently enrolled or accepted into an accredited Nigerian university",
-  "Minimum CGPA of 3.0 or equivalent",
+  "Resident of Walewale Constituency",
+  "Currently enrolled or accepted into an accredited Ghanaian tertiary institution",
+  "Minimum CGPA of 2.5 or equivalent",
   "Demonstrated financial need",
-  "Active participation in community service",
-  "Strong academic references",
+  "Active participation in community service within Walewale",
+  "Strong academic references from your community or institution",
 ];
 
 const steps = [

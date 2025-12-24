@@ -34,6 +34,7 @@ const ApplicationForm = () => {
     fullName: "",
     email: "",
     phone: "",
+    communityName: "",
     university: "",
     course: "",
     yearOfStudy: "",
@@ -166,6 +167,7 @@ const ApplicationForm = () => {
           full_name: formData.fullName,
           email: formData.email,
           phone: formData.phone,
+          community_name: formData.communityName,
           university: formData.university,
           course: formData.course,
           year_of_study: formData.yearOfStudy,
@@ -191,6 +193,7 @@ const ApplicationForm = () => {
         fullName: "",
         email: "",
         phone: "",
+        communityName: "",
         university: "",
         course: "",
         yearOfStudy: "",
@@ -321,7 +324,19 @@ const ApplicationForm = () => {
                   type="tel"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  placeholder="+234 XXX XXX XXXX"
+                  placeholder="+233 XXX XXX XXXX"
+                  required
+                  className="border-2"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="communityName">Community Name (within Walewale) *</Label>
+                <Input
+                  id="communityName"
+                  name="communityName"
+                  value={formData.communityName}
+                  onChange={handleInputChange}
+                  placeholder="e.g., Walewale, Wungu, Nasia"
                   required
                   className="border-2"
                 />

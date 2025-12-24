@@ -18,6 +18,7 @@ export type Database = {
         Row: {
           application_letter_url: string | null
           cgpa: string
+          community_name: string
           course: string
           created_at: string
           email: string
@@ -36,6 +37,7 @@ export type Database = {
         Insert: {
           application_letter_url?: string | null
           cgpa: string
+          community_name?: string
           course: string
           created_at?: string
           email: string
@@ -54,6 +56,7 @@ export type Database = {
         Update: {
           application_letter_url?: string | null
           cgpa?: string
+          community_name?: string
           course?: string
           created_at?: string
           email?: string

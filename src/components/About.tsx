@@ -1,9 +1,9 @@
 import { GraduationCap, Users, Target, Heart } from "lucide-react";
 
 const stats = [
-  { number: "500+", label: "Students Supported" },
-  { number: "₦50M+", label: "Awarded Since 2018" },
-  { number: "15+", label: "Partner Universities" },
+  { number: "200+", label: "Students Supported" },
+  { number: "GH₵500K+", label: "Awarded" },
+  { number: "10+", label: "Partner Institutions" },
   { number: "95%", label: "Graduation Rate" },
 ];
 
@@ -45,21 +45,21 @@ const About = () => {
             </h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                Dr. Kabiru is a distinguished Member of Parliament and a passionate advocate 
-                for education and youth empowerment in Nigeria. With over two decades of 
-                public service, he has dedicated his career to creating opportunities for 
-                young Nigerians to access quality education.
+                Dr. Kabiru is the distinguished Member of Parliament for Walewale Constituency 
+                and a passionate advocate for education and youth empowerment in Northern Ghana. 
+                With years of dedicated public service, he has committed his career to creating 
+                opportunities for young people in Walewale to access quality education.
               </p>
               <p>
-                Born and raised in Kano State, Dr. Kabiru understands firsthand the challenges 
-                faced by students from underprivileged backgrounds. His own educational journey, 
-                supported by mentors and community leaders, inspired him to establish this 
-                scholarship fund in 2018.
+                Born and raised in Walewale, Dr. Kabiru understands firsthand the challenges 
+                faced by students from underprivileged backgrounds in the constituency. His own 
+                educational journey, supported by mentors and community leaders, inspired him 
+                to establish this scholarship fund.
               </p>
               <p>
                 Through the Dr. Kabiru MP Scholarship Fund, he aims to remove financial barriers 
-                to higher education and nurture the next generation of Nigerian leaders, innovators, 
-                and change-makers.
+                to higher education and nurture the next generation of leaders, innovators, 
+                and change-makers from Walewale Constituency.
               </p>
             </div>
           </div>
@@ -86,7 +86,7 @@ const About = () => {
           </h2>
           <p className="text-lg text-muted-foreground">
             The Dr. Kabiru MP Scholarship Fund was established to support talented 
-            Nigerian students who face financial barriers to higher education. 
+            students from Walewale Constituency who face financial barriers to higher education. 
             Through our comprehensive scholarship program, we provide tuition 
             assistance, mentorship, and resources to help scholars succeed.
           </p>
