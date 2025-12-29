@@ -1,7 +1,5 @@
-import { GraduationCap, Users, Target, Heart, User } from "lucide-react";
-import drKairuImage from "@/assets/dr-kairu.jpg";
-// TODO: Replace this placeholder with the actual image import
-// import drKairuImage from "@/assets/dr-kairu.jpg";
+import { GraduationCap, Users, Target, Heart } from "lucide-react";
+import drKairuImage from "@/assets/Dr Kb photo.jpg";
 
 const stats = [
   { number: "200+", label: "Students Supported" },
@@ -42,22 +40,12 @@ const About = () => {
           {/* Photo Section */}
           <div className="flex justify-center lg:justify-start order-2 lg:order-1">
             <div className="relative">
-              {/* Placeholder for Dr. Kairu's photo - replace src with actual image */}
               <div className="w-72 h-96 md:w-80 md:h-[28rem] bg-muted border-2 border-border shadow-lg overflow-hidden">
-                {/* Uncomment and use this when you have the actual image:
                 <img 
                   src={drKairuImage} 
                   alt="Dr. Kairu Tiah Mahama" 
                   className="w-full h-full object-cover"
-                /> */}
-                
-                {/* Placeholder - remove when actual image is added */}
-                <div className="w-full h-full flex flex-col items-center justify-center bg-muted/50">
-                  <User className="w-24 h-24 text-muted-foreground/50 mb-4" />
-                  <p className="text-sm text-muted-foreground text-center px-4">
-                    Photo of Dr. Kairu Tiah Mahama
-                  </p>
-                </div>
+                />
               </div>
               {/* Decorative element */}
               <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-primary -z-10" />
