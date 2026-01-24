@@ -1,73 +1,123 @@
-# Welcome to your Lovable project
+# 🎓 Dr. Kabiru Scholarship Portal
 
-## Project info
+The **Dr. Kabiru Scholarship Portal** is a web-based platform designed to simplify and modernize the scholarship application and management process. It provides a seamless experience for applicants while giving administrators powerful tools to review, manage, and award scholarships efficiently.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+---
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+### 👩‍🎓 Applicant Features
+- User registration and secure login
+- Online scholarship application form
+- Upload of required documents
+- Application status tracking
+- Email notifications and updates
 
-**Use Lovable**
+### 🧑‍💼 Admin Features
+- Admin authentication and dashboard
+- View, filter, and manage applications
+- Download applicant documents
+- Approve or reject applications
+- Manage scholarship information and deadlines
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+- **Frontend:** HTML, CSS, JavaScript  
+- **Backend:** (Add your backend tech here – e.g. Node.js, PHP, Django, etc.)
+- **Database:** (e.g. MySQL, MongoDB, Firebase)
+- **Version Control:** Git & GitHub
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📂 Project Structure
 
-Follow these steps:
+dr-kabiru-scholarship-portal/
+│
+├── public/ # Static files
+├── src/ # Application source code
+│ ├── components/ # Reusable components
+│ ├── pages/ # Page layouts
+│ └── assets/ # Images & styles
+│
+├── README.md
+└── package.json
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+*(Structure may vary based on implementation)*
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## ⚙️ Installation & Setup
 
-**Edit a file directly in GitHub**
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/abdulhakim1217/Dr-kabiru-scholarship-portal.git
+Navigate into the project directory:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+cd dr-kabiru-scholarship-portal
 
-**Use GitHub Codespaces**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Install dependencies (if applicable):
 
-## What technologies are used for this project?
+npm install
 
-This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Start the development server:
 
-## How can I deploy this project?
+npm start
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+🔐 Security
 
-## Can I connect a custom domain to my Lovable project?
+Secure authentication for users and admins
 
-Yes, you can!
+File upload validation
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Role-based access control
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+🌍 Vision
+
+The Dr. Kabiru Scholarship Portal aims to:
+
+Increase access to educational opportunities
+
+Promote transparency in scholarship selection
+
+Reduce paperwork and manual processes
+
+Support talented students through technology
+
+🤝 Contributing
+
+Contributions are welcome!
+
+Fork the repository
+
+Create a new branch
+
+Make your changes
+
+Submit a pull request
+
+📄 License
+
+This project is licensed under the MIT License.
+
+👤 Author
+
+Abdul Karim Hakim
+📧 GitHub: abdulhakim1217
+
+✨ Empowering students. Enabling education. Building the future.
+
+
+---
+
+If you want, I can:
+- Tailor this README to **match your exact tech stack**
+- Make it **grant/funder-ready**
+- Add **screenshots & badges**
+- Simplify it for **non-technical reviewers**
+
+Just tell me 👌
