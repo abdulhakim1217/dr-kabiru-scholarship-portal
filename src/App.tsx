@@ -19,7 +19,7 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <BrowserRouter basename={import.meta.env.PROD ? '/dr-kabiru-scholarship-portal' : '/'}>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/admin" element={<AdminAuth />} />
