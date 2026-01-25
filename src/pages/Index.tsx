@@ -12,7 +12,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Dr. Kairu Tiah Mahama MP Scholarship Fund | Walewale Constituency</title>
+        <title>Dr. Kabiru Tiah Mahama MP Scholarship Fund | Walewale Constituency</title>
         <meta 
           name="description" 
           content="Apply for the Dr. Kairu Tiah Mahama MP Scholarship Fund. Financial support for students from Walewale Constituency pursuing higher education in Ghana. Tuition assistance, mentorship, and resources available." 
