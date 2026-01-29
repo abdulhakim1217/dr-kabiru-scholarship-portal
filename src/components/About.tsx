@@ -1,5 +1,5 @@
 import { GraduationCap, Users, Target, Heart, User } from "lucide-react";
-import drKairuImage from "@/assets/Dr Kb photo.jpg";
+import drKabiruImage from "@/assets/Dr Kb photo.jpg";
 
 const stats = [
   { number: "150+", label: "Students Supported" },
@@ -35,16 +35,16 @@ const About = () => {
   return (
     <section id="about" className="py-24 bg-secondary">
       <div className="container mx-auto px-4">
-        {/* About Dr Kairu Tiah Mahama */}
+        {/* About Dr Kabiru Tiah Mahama */}
         <div className="grid lg:grid-cols-2 gap-12 mb-20 items-center">
           {/* Photo Section */}
           <div className="flex justify-center lg:justify-start order-2 lg:order-1">
             <div className="relative">
-              {/* Dr. Kairu's photo */}
+              {/* Dr. Kabiru's photo */}
               <div className="w-72 h-96 md:w-80 md:h-[28rem] bg-muted border-2 border-border shadow-lg overflow-hidden">
                 <img 
-                  src={drKairuImage} 
-                  alt="Dr. Kairu Tiah Mahama" 
+                  src={drKabiruImage} 
+                  alt="Dr. Kabiru Tiah Mahama" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -59,26 +59,26 @@ const About = () => {
               Meet The Founder
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
-              Dr. Kairu Tiah Mahama
+              Dr. Kabiru Tiah Mahama
             </h2>
             <p className="text-lg text-muted-foreground font-medium mb-6">
               Member of Parliament, Walewale Constituency
             </p>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                Dr. Kairu Tiah Mahama is the distinguished Member of Parliament for Walewale Constituency 
+                Dr. Kabiru Tiah Mahama is the distinguished Member of Parliament for Walewale Constituency 
                 and a passionate advocate for education and youth empowerment in Northern Ghana. 
                 With years of dedicated public service, he has committed his career to creating 
                 opportunities for young people in Walewale to access quality education.
               </p>
               <p>
-                Born and raised in Janga in the North East region Ghana, Dr. Kairu understands firsthand the challenges 
+                Born and raised in Janga in the North East region Ghana, Dr. Kabiru understands firsthand the challenges 
                 faced by students from underprivileged backgrounds in the constituency. His own 
                 educational journey, supported by mentors and community leaders, inspired him 
                 to establish this scholarship fund.
               </p>
               <p>
-                Through the Dr. Kairu MP Scholarship Fund, he aims to remove financial barriers 
+                Through the Dr. Kabiru MP Scholarship Fund, he aims to remove financial barriers 
                 to higher education and nurture the next generation of leaders, innovators, 
                 and change-makers from Walewale Constituency.
               </p>
@@ -91,7 +91,7 @@ const About = () => {
                 in a student's education, we invest in the future of our nation."
               </blockquote>
               <cite className="text-sm font-mono text-muted-foreground">
-                — Dr. Kairu Tiah Mahama
+                — Dr. Kabiru Tiah Mahama
               </cite>
             </div>
           </div>
@@ -106,7 +106,7 @@ const About = () => {
             BUILDING FUTURES,<br />ONE STUDENT AT A TIME
           </h2>
           <p className="text-lg text-muted-foreground">
-            The Dr. Kairu MP Scholarship Fund was established to support talented 
+            The Dr. Kabiru MP Scholarship Fund was established to support talented 
             students from Walewale Constituency who face financial barriers to higher education. 
             Through our comprehensive scholarship program, we provide tuition 
             assistance, mentorship, and resources to help scholars succeed.
