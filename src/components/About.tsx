@@ -69,10 +69,10 @@ const About = () => {
                 Dr. Kabiru Tiah Mahama is the distinguished Member of Parliament for Walewale Constituency 
                 and a passionate advocate for education and youth empowerment in Northern Ghana. 
                 With years of dedicated public service, he has committed his career to creating 
-                opportunities for young people in Walewale to access quality education.
+                opportunities for young people in Walewale Constituency to access quality education.
               </p>
               <p>
-                Born and raised in Janga in the North East region Ghana, Dr. Kabiru understands firsthand the challenges 
+                Born and raised in Janga in the North East region of Ghana, Dr. Kabiru understands firsthand the challenges 
                 faced by students from underprivileged backgrounds in the constituency. His own 
                 educational journey, supported by mentors and community leaders, inspired him 
                 to establish this scholarship fund.
