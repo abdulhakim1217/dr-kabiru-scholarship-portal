@@ -28,14 +28,6 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  useEffect(() => {
-    checkAuthAndFetch();
-  }, [checkAuthAndFetch]);
-
-  useEffect(() => {
-    filterApplications();
-  }, [filterApplications]);
-
   const checkAuthAndFetch = useCallback(async () => {
     const { data: { session } } = await supabase.auth.getSession();
     
@@ -59,6 +51,35 @@ const AdminDashboard = () => {
 
     fetchApplications();
   }, [navigate]);
+
+  const filterApplications = useCallback(() => {
+    let filtered = applications;
+
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      filtered = filtered.filter(
+        (app) =>
+          app.full_name.toLowerCase().includes(term) ||
+          app.email.toLowerCase().includes(term) ||
+          app.university.toLowerCase().includes(term) ||
+          app.community_name.toLowerCase().includes(term)
+      );
+    }
+
+    if (statusFilter !== "all") {
+      filtered = filtered.filter((app) => app.status === statusFilter);
+    }
+
+    setFilteredApplications(filtered);
+  }, [applications, searchTerm, statusFilter]);
+
+  useEffect(() => {
+    checkAuthAndFetch();
+  }, [checkAuthAndFetch]);
+
+  useEffect(() => {
+    filterApplications();
+  }, [filterApplications]);
 
   const fetchApplications = async () => {
     try {
