@@ -96,14 +96,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     if (data.user && !error) {
-      // Create user profile
-      await supabase.from('user_profiles').insert({
-        user_id: data.user.id,
-        full_name: userData?.full_name || '',
-        phone: userData?.phone || '',
-        community_name: userData?.community_name || ''
-      });
-
       // Assign default user role
       await supabase.from('user_roles').insert({
         user_id: data.user.id,
@@ -131,13 +123,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const updateProfile = async (updates: Record<string, unknown>) => {
     if (!user) throw new Error('No user logged in');
 
-    const { error } = await supabase
-      .from('user_profiles')
-      .upsert({
-        user_id: user.id,
-        ...updates,
-        updated_at: new Date().toISOString()
-      });
+    // Update user metadata in auth
+    const { error } = await supabase.auth.updateUser({
+      data: updates
+    });
 
     return { error };
   };

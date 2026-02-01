@@ -14,6 +14,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import * as XLSX from "xlsx";
 import type { Tables } from "@/integrations/supabase/types";
+import { DocumentViewButton } from "@/components/admin/DocumentViewButton";
 
 type Application = Tables<"scholarship_applications">;
 
@@ -51,6 +52,26 @@ const AdminDashboard = () => {
 
     fetchApplications();
   }, [navigate]);
+
+  const fetchApplications = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("scholarship_applications")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      setApplications(data || []);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to fetch applications",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const filterApplications = useCallback(() => {
     let filtered = applications;
@@ -101,27 +122,6 @@ const AdminDashboard = () => {
     }
   };
 
-  const filterApplications = useCallback(() => {
-    let filtered = applications;
-
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      filtered = filtered.filter(
-        (app) =>
-          app.full_name.toLowerCase().includes(term) ||
-          app.email.toLowerCase().includes(term) ||
-          app.university.toLowerCase().includes(term) ||
-          app.community_name.toLowerCase().includes(term)
-      );
-    }
-
-    if (statusFilter !== "all") {
-      filtered = filtered.filter((app) => app.status === statusFilter);
-    }
-
-    setFilteredApplications(filtered);
-  }, [applications, searchTerm, statusFilter]);
-
   const updateStatus = async (id: string, newStatus: string) => {
     setIsUpdating(true);
     try {
@@ -161,18 +161,32 @@ const AdminDashboard = () => {
   };
 
   const prepareExportData = () => {
-    return filteredApplications.map((app) => ({
+    return filteredApplications.map((app, index) => ({
+      "S/N": index + 1,
       "Full Name": app.full_name,
       "Email": app.email,
-      "Phone": app.phone,
-      "Community": app.community_name,
-      "University": app.university,
-      "Course": app.course,
+      "Phone Number": app.phone,
+      "Community/Town": app.community_name,
+      "University/Institution": app.university,
+      "Course of Study": app.course,
       "Year of Study": app.year_of_study,
       "CGPA": app.cgpa,
-      "Status": app.status,
-      "Reason": app.reason,
-      "Application Date": new Date(app.created_at).toLocaleDateString(),
+      "Application Status": app.status.charAt(0).toUpperCase() + app.status.slice(1).replace("_", " "),
+      "Reason for Application": app.reason,
+      "Transcript Uploaded": app.transcript_url ? "Yes" : "No",
+      "Application Letter Uploaded": app.application_letter_url ? "Yes" : "No",
+      "Nomination Letter Uploaded": app.nomination_letter_url ? "Yes" : "No",
+      "Supporting Docs Uploaded": app.supporting_docs_url ? "Yes" : "No",
+      "Application Date": new Date(app.created_at).toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }),
+      "Last Updated": new Date(app.updated_at).toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }),
     }));
   };
 
@@ -453,34 +467,22 @@ const AdminDashboard = () => {
               <div>
                 <p className="text-sm text-muted-foreground mb-2">Documents</p>
                 <div className="flex flex-wrap gap-2">
-                  {selectedApplication.transcript_url && (
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={selectedApplication.transcript_url} target="_blank" rel="noopener noreferrer">
-                        View Transcript
-                      </a>
-                    </Button>
-                  )}
-                  {selectedApplication.application_letter_url && (
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={selectedApplication.application_letter_url} target="_blank" rel="noopener noreferrer">
-                        View Application Letter
-                      </a>
-                    </Button>
-                  )}
-                  {selectedApplication.nomination_letter_url && (
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={selectedApplication.nomination_letter_url} target="_blank" rel="noopener noreferrer">
-                        View Nomination Letter
-                      </a>
-                    </Button>
-                  )}
-                  {selectedApplication.supporting_docs_url && (
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={selectedApplication.supporting_docs_url} target="_blank" rel="noopener noreferrer">
-                        View Supporting Docs
-                      </a>
-                    </Button>
-                  )}
+                  <DocumentViewButton
+                    url={selectedApplication.transcript_url}
+                    label="View Transcript"
+                  />
+                  <DocumentViewButton
+                    url={selectedApplication.application_letter_url}
+                    label="View Application Letter"
+                  />
+                  <DocumentViewButton
+                    url={selectedApplication.nomination_letter_url}
+                    label="View Nomination Letter"
+                  />
+                  <DocumentViewButton
+                    url={selectedApplication.supporting_docs_url}
+                    label="View Supporting Docs"
+                  />
                 </div>
               </div>
 
