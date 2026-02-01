@@ -7,9 +7,9 @@ import student3 from "@/assets/abdul profile.jpg";
 const successStories = [
   {
     id: 1,
-    name: "Yakubu Jamaldeen Seini",
+    name: "Imoro Abdul Waliu",
     image: student1,
-    university: "University of Ghana",
+    university: "University for Development Studies",
     course: "Public Health",
     year: "2023",
     testimonial:
@@ -33,7 +33,7 @@ const successStories = [
     course: "Computer Science",
     year: "2023",
     testimonial:
-      "Thanks to this scholarship, I can focus on my studies without worrying about fees. The support from Dr. Kairu's office has been incredible. I'm now developing tech solutions to help farmers in Northern Ghana.",
+      "This scholarship has been life-changing for me. I can now focus entirely on my studies without financial stress. The support from Dr. Kabiru's office has been incredible. I'm currently developing innovative tech solutions to help farmers in Northern Ghana.",
   },
 ];
 

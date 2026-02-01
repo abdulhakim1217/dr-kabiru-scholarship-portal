@@ -53,7 +53,7 @@ const Footer = () => {
               <div className="flex items-start gap-3 text-primary-foreground/80">
                 <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" />
                 <span>
-                  Member of Parliamnet for Walewale Constituency, Ghana<br />
+                  Member of Parliament for Walewale Constituency, Ghana<br />
                 </span>
               </div>
             </div>

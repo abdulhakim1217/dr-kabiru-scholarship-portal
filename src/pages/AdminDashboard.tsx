@@ -29,6 +29,26 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
 
+  const fetchApplications = useCallback(async () => {
+    try {
+      const { data, error } = await supabase
+        .from("scholarship_applications")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      setApplications(data || []);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to fetch applications",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }, [toast]);
+
   const checkAuthAndFetch = useCallback(async () => {
     const { data: { session } } = await supabase.auth.getSession();
     
@@ -51,27 +71,7 @@ const AdminDashboard = () => {
     }
 
     fetchApplications();
-  }, [navigate]);
-
-  const fetchApplications = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("scholarship_applications")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-      if (error) throw error;
-      setApplications(data || []);
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to fetch applications",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  }, [navigate, fetchApplications]);
 
   const filterApplications = useCallback(() => {
     let filtered = applications;
@@ -101,26 +101,6 @@ const AdminDashboard = () => {
   useEffect(() => {
     filterApplications();
   }, [filterApplications]);
-
-  const fetchApplications = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("scholarship_applications")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-      if (error) throw error;
-      setApplications(data || []);
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to fetch applications",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const updateStatus = async (id: string, newStatus: string) => {
     setIsUpdating(true);
